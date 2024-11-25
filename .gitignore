@@ -42,5 +42,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# User added
 .env
 info
+txt.txt
