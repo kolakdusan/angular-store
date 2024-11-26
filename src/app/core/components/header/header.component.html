@@ -1,1 +1,48 @@
-<p>header works!</p>
+<header class="header">
+  <div class="container">
+    <nav class="navbar">
+      <button
+        type="button"
+        (click)="toggleSidebar()"
+        class="sidebar-button"
+        [ngClass]="{ active: isSidebarOpen }"
+      >
+        <fa-icon *ngIf="!isSidebarOpen" [icon]="faBars"></fa-icon>
+        <fa-icon *ngIf="isSidebarOpen" [icon]="faXmark"></fa-icon>
+      </button>
+      <a routerLink="/" class="logo">Angular Shop</a>
+      <ul class="nav-links primary-nav">
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/products">Products</a></li>
+        <li><a routerLink="/about">About</a></li>
+      </ul>
+      <ul *ngIf="isSidebarOpen" class="nav-links primary-nav sidebar">
+        <li><a routerLink="/" (click)="toggleSidebar()">Home</a></li>
+        <li>
+          <a routerLink="/products" (click)="toggleSidebar()">Products</a>
+        </li>
+        <li><a routerLink="/about" (click)="toggleSidebar()">About</a></li>
+      </ul>
+      <ul class="nav-links secondary-nav">
+        <li>
+          <a routerLink="/login">
+            <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+            Login</a
+          >
+        </li>
+        <li>
+          <a routerLink="/signup">
+            <fa-icon [icon]="faUserPlus"></fa-icon>
+            Sign Up</a
+          >
+        </li>
+        <li>
+          <a routerLink="/github" class="github-link">
+            <fa-icon [icon]="faGithub" class="github-icon"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <img src="assets/AbstractDesign.svg" alt="" />
+</header>

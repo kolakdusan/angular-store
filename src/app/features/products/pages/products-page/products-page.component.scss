@@ -1,0 +1,63 @@
+// Dark mode styles
+$background-color: #121212;
+$text-color: #e0e0e0;
+$link-color: #bb86fc;
+$primary-background: #1e1e1e;
+$secondary-background: #333;
+
+.full-width-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center; // Centers content horizontally
+  align-items: center; // Centers content vertically
+  padding: 2rem;
+  background-color: $background-color; // Dark background for the wrapper
+}
+
+.content-block {
+  width: 80%; // Adjust width as needed
+  max-width: 1200px; // Optional: max width for large screens
+  padding: 2rem;
+  background-color: $primary-background; // Dark background for the content block
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: $text-color; // Text color for readability
+
+  h1 {
+    font-size: 2.5rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $text-color;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    font-size: 1.2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: $link-color; // Link color for dark mode
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

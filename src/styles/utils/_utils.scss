@@ -1,0 +1,35 @@
+.container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+.wider-container {
+  @extend .container;
+  max-width: 1550px;
+}
+
+.absolute-centered {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.grid-1fr {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
