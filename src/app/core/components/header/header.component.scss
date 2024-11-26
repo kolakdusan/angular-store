@@ -1,0 +1,152 @@
+@use 'styles/utils' as util;
+
+.header {
+  position: relative;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid util.$gray-100;
+  white-space: nowrap;
+
+  @include util.mobile-view {
+    padding: 1rem 0;
+  }
+
+  .container {
+    @include util.mobile-view {
+      padding: 0 1rem;
+    }
+
+    @include util.tablet-view {
+      padding: 0 1.5rem; // TODO: possibly make the media query global
+    }
+  }
+
+  .navbar {
+    @extend .grid-1fr;
+
+    @include util.tablet-view {
+      grid-auto-columns: 1fr 3fr 3fr;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 600;
+
+      @include util.mobile-view {
+        font-size: 1.4rem;
+      }
+    }
+
+    .nav-links {
+      @extend .flex-center;
+      font-size: 1.2rem;
+
+      &.primary-nav {
+        padding: 0.2rem 3rem;
+        border: 2px solid util.$gray-100;
+        gap: 4rem;
+        border-radius: 50px;
+        background-color: util.$black-100;
+
+        @include util.tablet-view {
+          display: none;
+        }
+      }
+
+      &.secondary-nav {
+        @extend .flex-center;
+        justify-content: flex-end;
+
+        @include util.mobile-view {
+          font-size: 0.9rem;
+        }
+
+        a {
+          @extend .flex-center;
+          height: 40px;
+          gap: 5px;
+          padding: 0.2rem 1rem;
+          background-color: util.$black-200;
+          border: 2px solid util.$gray-100;
+          border-radius: 5px;
+          transition: background-color 0.15s ease;
+
+          &:hover {
+            background-color: util.$gray-100;
+          }
+        }
+
+        & .github-link {
+          padding: 0.5rem;
+
+          @include util.tablet-view {
+            display: none;
+          }
+        }
+      }
+
+      &.sidebar {
+        display: none;
+
+        @include util.tablet-view {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          border-radius: 0;
+          border: none;
+          display: flex;
+          flex-direction: column;
+          background-color: rgba(0, 0, 0, 0.7);
+          backdrop-filter: blur(5px);
+          font-size: 3rem;
+          z-index: 999;
+        }
+      }
+
+      .github-icon {
+        font-size: 1.7rem;
+      }
+    }
+
+    .sidebar-button {
+      display: none;
+      font-size: 1.5rem;
+      outline: 2px solid util.$gray-100;
+      border-radius: 5px;
+      background-color: util.$black-200;
+      width: 40px;
+      aspect-ratio: 1/1;
+
+      @include util.tablet-view {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        color: util.$highlight-color;
+        transition: all 0.15s ease;
+
+        &:hover {
+          background-color: util.$gray-100;
+        }
+      }
+
+      &.active {
+        outline: none;
+        background-color: transparent;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+
+  img {
+    @extend .absolute-centered;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+  }
+}
