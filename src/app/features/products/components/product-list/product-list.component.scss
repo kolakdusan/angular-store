@@ -1,0 +1,16 @@
+@use 'styles/utils' as utils;
+
+.product-list {
+  margin: 1.5rem 0 4rem 0;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 1300px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include utils.mobile-view {
+    grid-template-columns: 1fr;
+  }
+}

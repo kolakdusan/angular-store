@@ -1,0 +1,29 @@
+@use 'styles/utils' as utils;
+
+button {
+  background-color: utils.$highlight-color;
+  color: white;
+  padding: 0.3rem 1.3rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(120%);
+  }
+}
+
+.outline-button {
+  @extend .flex-center;
+  height: 40px;
+  gap: 5px;
+  padding: 0.2rem 1rem;
+  background-color: utils.$black-200;
+  border: 2px solid utils.$gray-100;
+  border-radius: 5px;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: utils.$gray-100;
+  }
+}

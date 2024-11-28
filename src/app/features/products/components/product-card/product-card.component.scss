@@ -1,0 +1,59 @@
+@use 'styles/utils' as utils;
+
+.product-card {
+  border: 2px solid utils.$gray-100;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .product-title {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  .product-description {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+    white-space: nowrap;
+    color: utils.$gray-300;
+
+    .read-more {
+      color: utils.$white-100;
+      text-decoration: none;
+    }
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.3rem;
+
+    .product-price {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+
+      .price-label {
+        font-size: 0.8rem;
+        color: #666;
+      }
+
+      .price-amount {
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
