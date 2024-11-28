@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FormsModule } from '@angular/forms'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { SharedRoutingModule } from './shared-routing.module'
 import { ButtonComponent } from './components/button/button.component'
@@ -14,6 +16,7 @@ import { ErrorPageComponent } from './pages/error-page/error-page.component'
     BadgeComponent,
     ErrorPageComponent,
   ],
-  imports: [CommonModule, SharedRoutingModule],
+  imports: [CommonModule, SharedRoutingModule, FormsModule, FontAwesomeModule],
+  exports: [SearchBarComponent, BadgeComponent, ButtonComponent],
 })
 export class SharedModule {}

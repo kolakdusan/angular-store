@@ -1,0 +1,59 @@
+@use 'styles/utils' as utils;
+
+:host {
+  width: 100%;
+}
+
+.product-sidebar {
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  border: 2px solid utils.$gray-100;
+  font-weight: 500;
+  min-width: 250px;
+
+  @include utils.tablet-view {
+    width: 100%;
+  }
+
+  .sidebar-icon {
+    color: utils.$highlight-color;
+  }
+
+  .title {
+    padding: 1rem 0.7rem;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+
+    .category {
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      background: linear-gradient(
+        to right,
+        utils.$gray-200 0%,
+        transparent 90%
+      );
+      // webkit FIXME:
+
+      &.active {
+        position: relative;
+
+        &::after {
+          content: '';
+          @extend .absolute-centered;
+          height: 100%;
+          width: 2px;
+          background-color: utils.$highlight-color;
+          right: unset;
+        }
+      }
+    }
+  }
+}

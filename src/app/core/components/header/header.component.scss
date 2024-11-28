@@ -1,21 +1,21 @@
-@use 'styles/utils' as util;
+@use 'styles/utils' as utils;
 
 .header {
   position: relative;
   padding: 1rem 2rem;
-  border-bottom: 2px solid util.$gray-100;
+  border-bottom: 2px solid utils.$gray-100;
   white-space: nowrap;
 
-  @include util.mobile-view {
+  @include utils.mobile-view {
     padding: 1rem 0;
   }
 
   .container {
-    @include util.mobile-view {
+    @include utils.mobile-view {
       padding: 0 1rem;
     }
 
-    @include util.tablet-view {
+    @include utils.tablet-view {
       padding: 0 1.5rem; // TODO: possibly make the media query global
     }
   }
@@ -23,15 +23,15 @@
   .navbar {
     @extend .grid-1fr;
 
-    @include util.tablet-view {
+    @include utils.tablet-view {
       grid-auto-columns: 1fr 3fr 3fr;
     }
 
     .logo {
       font-size: 2rem;
       font-weight: 600;
-
-      @include util.mobile-view {
+      align-self: flex-start;
+      @include utils.mobile-view {
         font-size: 1.4rem;
       }
     }
@@ -42,12 +42,12 @@
 
       &.primary-nav {
         padding: 0.2rem 3rem;
-        border: 2px solid util.$gray-100;
+        border: 2px solid utils.$gray-100;
         gap: 4rem;
         border-radius: 50px;
-        background-color: util.$black-100;
+        background-color: utils.$black-100;
 
-        @include util.tablet-view {
+        @include utils.tablet-view {
           display: none;
         }
       }
@@ -56,7 +56,7 @@
         @extend .flex-center;
         justify-content: flex-end;
 
-        @include util.mobile-view {
+        @include utils.mobile-view {
           font-size: 0.9rem;
         }
 
@@ -65,20 +65,20 @@
           height: 40px;
           gap: 5px;
           padding: 0.2rem 1rem;
-          background-color: util.$black-200;
-          border: 2px solid util.$gray-100;
+          background-color: utils.$black-200;
+          border: 2px solid utils.$gray-100;
           border-radius: 5px;
           transition: background-color 0.15s ease;
 
           &:hover {
-            background-color: util.$gray-100;
+            background-color: utils.$gray-100;
           }
         }
 
         & .github-link {
           padding: 0.5rem;
 
-          @include util.tablet-view {
+          @include utils.tablet-view {
             display: none;
           }
         }
@@ -87,7 +87,7 @@
       &.sidebar {
         display: none;
 
-        @include util.tablet-view {
+        @include utils.tablet-view {
           position: fixed;
           top: 0;
           left: 0;
@@ -112,28 +112,29 @@
     .sidebar-button {
       display: none;
       font-size: 1.5rem;
-      outline: 2px solid util.$gray-100;
+      outline: 2px solid utils.$gray-100;
       border-radius: 5px;
-      background-color: util.$black-200;
+      background-color: utils.$black-200;
       width: 40px;
       aspect-ratio: 1/1;
 
-      @include util.tablet-view {
+      @include utils.tablet-view {
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 1000;
-        color: util.$highlight-color;
+        color: utils.$highlight-color;
         transition: all 0.15s ease;
 
         &:hover {
-          background-color: util.$gray-100;
+          background-color: utils.$gray-100;
         }
       }
 
       &.active {
         outline: none;
         background-color: transparent;
+        position: fixed;
 
         &:hover {
           background-color: transparent;

@@ -1,0 +1,57 @@
+@use 'styles/utils' as utils;
+
+:host {
+  width: 100%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  align-self: flex-start;
+
+  .search-input {
+    width: 30%;
+    padding: 0.8rem;
+    padding-left: 3rem;
+    font-size: 1rem;
+    border: 2px solid utils.$gray-100;
+    border-radius: 10px;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    &:focus {
+      border: 2px solid utils.$highlight-color;
+    }
+
+    @include utils.tablet-view {
+      width: 100%;
+    }
+  }
+
+  .search-icon-wrapper {
+    position: absolute;
+    left: 0.8rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+
+    .inner-wrapper {
+      width: 30px;
+      height: 30px;
+      background-color: utils.$highlight-color;
+      border-radius: 5px;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

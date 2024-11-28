@@ -1,8 +1,9 @@
-// Dark mode styles with slight red tint for error page
+@use 'styles/utils' as utils;
+
 $background-color: #121212;
 $text-color: #e0e0e0;
-$link-color: #ff6347; // Red-ish link color
-$error-background: #2c1a1a; // Slight red tint for the error page
+$link-color: #ff6347;
+$error-background: #2c1a1a;
 $primary-background: #1e1e1e;
 
 .full-width-wrapper {
@@ -11,14 +12,13 @@ $primary-background: #1e1e1e;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background-color: $background-color;
 }
 
 .error-block {
   width: 80%;
   max-width: 800px;
   padding: 2rem;
-  background-color: $error-background; // Slight red background
+  background-color: $error-background;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   color: $text-color;
