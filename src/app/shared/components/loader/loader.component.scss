@@ -1,0 +1,38 @@
+$color-dark: #c0c0c0;
+$color-dark-translucent: #c0c0c020;
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loader {
+  display: block;
+  width: 16px;
+  aspect-ratio: 1/1;
+  margin: 7rem 0 12rem 0;
+  border-radius: 50%;
+  background-color: $color-dark;
+  box-shadow: 32px 0 $color-dark, -32px 0 $color-dark;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+  align-self: center;
+  justify-self: center;
+}
+
+@keyframes flash {
+  0% {
+    background-color: $color-dark-translucent;
+    box-shadow: 32px 0 $color-dark-translucent, -32px 0 $color-dark;
+  }
+  50% {
+    background-color: $color-dark;
+    box-shadow: 32px 0 $color-dark-translucent, -32px 0 $color-dark-translucent;
+  }
+  100% {
+    background-color: $color-dark-translucent;
+    box-shadow: 32px 0 $color-dark, -32px 0 $color-dark-translucent;
+  }
+}

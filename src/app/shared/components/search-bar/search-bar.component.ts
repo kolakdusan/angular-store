@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Output, EventEmitter } from '@angular/core'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
@@ -11,7 +11,14 @@ export class SearchBarComponent {
 
   searchTerm: string = ''
 
-  onSearch(): void {
-    console.log('Searching for:', this.searchTerm)
+  @Output() searchChanged: EventEmitter<string> = new EventEmitter()
+
+  onSubmit(): void {
+    const sanitizedSearchTerm = this.sanitizeInput(this.searchTerm)
+    this.searchChanged.emit(sanitizedSearchTerm)
+  }
+
+  sanitizeInput(input: string): string {
+    return input.trim().replace(/\s+/g, ' ')
   }
 }

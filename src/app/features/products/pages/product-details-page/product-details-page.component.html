@@ -1,30 +1,43 @@
-<div class="product-details">
-  <div class="carousel-thumbnails">
-    <img src="assets/product-details-1.jpg" alt="" />
-    <img src="assets/product-details-2.jpg" alt="" />
-    <img src="assets/product-details-3.jpg" alt="" />
-  </div>
-  <div class="carousel-image">
-    <img src="assets/product-details-1.jpg" alt="" />
-  </div>
-  <div class="carousel-details">
-    <div class="carousel-header">
-      <div class="title">Summer T-Shirt</div>
-      <div class="badge">Clothes</div>
+<app-loader *ngIf="isLoading$ | async"></app-loader>
+
+<div *ngIf="error$ | async as error">
+  <app-fallback></app-fallback>
+</div>
+
+<ng-container *ngIf="!(isLoading$ | async)">
+  <div class="product-details" *ngIf="product$ | async as product">
+    <div class="carousel-thumbnails">
+      <img
+        *ngFor="let image of product.images | slice : 0 : 3"
+        [src]="image"
+        alt="product image"
+        priority
+        (click)="setMainImage(image)"
+        [class.active]="image === mainImage"
+        loading="lazy"
+      />
     </div>
 
-    <div class="description">
-      This stylish shirt is made from soft, breathable fabric for all-day
-      comfort. Featuring a classic design with a modern fit, it's perfect for
-      casual outings or layering. Available in a range of sizes and colors, it
-      combines versatility and timeless style, making it a wardrobe essential.
+    <div class="carousel-image">
+      <img [src]="mainImage || product.thumbnail" alt="main product image" />
     </div>
-    <div class="cta">
-      <div class="price">
-        <p>Price</p>
-        <p>$ 114</p>
+
+    <div class="carousel-details">
+      <div class="carousel-header">
+        <div class="title">{{ product.name }}</div>
+        <div class="badge">{{ product.category }}</div>
       </div>
-      <app-button>Add To Cart</app-button>
+
+      <div class="description">
+        {{ product.description }}
+      </div>
+      <div class="cta">
+        <div class="price">
+          <p>Price</p>
+          <p>{{ product.price | currency }}</p>
+        </div>
+        <app-button>Add To Cart</app-button>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

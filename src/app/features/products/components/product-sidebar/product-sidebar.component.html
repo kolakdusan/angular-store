@@ -6,45 +6,11 @@
   <div class="categories">
     <div
       class="category"
-      [class.active]="selectedCategory === 'All'"
-      (click)="setCategory('All')"
+      *ngFor="let category of categories"
+      [class.active]="selectedCategory === category.value"
+      (click)="setCategory(category.value)"
     >
-      All
-    </div>
-    <div
-      class="category"
-      [class.active]="selectedCategory === 'Clothes'"
-      (click)="setCategory('Clothes')"
-    >
-      Clothes
-    </div>
-    <div
-      class="category"
-      [class.active]="selectedCategory === 'Electronics'"
-      (click)="setCategory('Electronics')"
-    >
-      Electronics
-    </div>
-    <div
-      class="category"
-      [class.active]="selectedCategory === 'Furniture'"
-      (click)="setCategory('Furniture')"
-    >
-      Furniture
-    </div>
-    <div
-      class="category"
-      [class.active]="selectedCategory === 'Shoes'"
-      (click)="setCategory('Shoes')"
-    >
-      Shoes
-    </div>
-    <div
-      class="category"
-      [class.active]="selectedCategory === 'Miscellaneous'"
-      (click)="setCategory('Miscellaneous')"
-    >
-      Miscellaneous
+      {{ category.display }}
     </div>
   </div>
 </div>

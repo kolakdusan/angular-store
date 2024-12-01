@@ -1,0 +1,64 @@
+@use 'styles/utils' as utils;
+
+$background-color: #121212;
+$text-color: #e0e0e0;
+$link-color: #ff6347;
+$error-background: #2c1a1a;
+$primary-background: #1e1e1e;
+
+.full-width-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.error-block {
+  width: 90%;
+  padding: 2rem;
+  background-color: $error-background;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  color: $text-color;
+  text-align: left;
+  margin: 1.5rem 0 4rem 0;
+
+  h1 {
+    font-size: 2rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $text-color;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    font-size: 1rem;
+    color: $text-color;
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
