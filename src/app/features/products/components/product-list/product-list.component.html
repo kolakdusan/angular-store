@@ -1,6 +1,12 @@
-<div class="product-list">
+<app-loader *ngIf="isLoading$ | async"></app-loader>
+
+<div *ngIf="error$ | async as error">
+  <app-fallback></app-fallback>
+</div>
+
+<div *ngIf="!(isLoading$ | async)" class="product-list">
   <app-product-card
-    *ngFor="let product of products"
+    *ngFor="let product of products$ | async | shuffle"
     [product]="product"
     (idClicked)="onProductClick($event)"
   ></app-product-card>

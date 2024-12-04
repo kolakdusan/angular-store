@@ -2,6 +2,13 @@
 
 :host {
   width: 100%;
+  position: sticky;
+  top: 5rem;
+
+  @include utils.tablet-view {
+    position: relative;
+    top: 0;
+  }
 }
 
 .product-sidebar {
@@ -10,6 +17,24 @@
   border: 2px solid utils.$gray-100;
   font-weight: 500;
   min-width: 250px;
+  max-height: 300px;
+  overflow-y: scroll;
+  height: 300px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: utils.$black-100;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: utils.$highlight-color;
+  }
 
   @include utils.tablet-view {
     width: 100%;
@@ -18,12 +43,17 @@
   .sidebar-icon {
     color: utils.$highlight-color;
   }
+  position: relative;
 
   .title {
+    position: sticky;
+    background-color: utils.$black-100;
+    z-index: 999;
+    top: 0;
     padding: 1rem 0.7rem;
-    padding-bottom: 0;
+    padding-bottom: 0.5rem;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    box-shadow: 0px 2px 5px utils.$black-200;
   }
 
   .categories {
@@ -35,6 +65,7 @@
       padding: 0.3rem 0.5rem;
       margin-bottom: 1rem;
       cursor: pointer;
+      width: 97%;
       background: linear-gradient(
         to right,
         utils.$gray-200 0%,
@@ -42,8 +73,13 @@
       );
       // webkit FIXME:
 
+      transition: all 0.2s ease;
       &.active {
         position: relative;
+
+        background-color: utils.$gray-400;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
 
         &::after {
           content: '';

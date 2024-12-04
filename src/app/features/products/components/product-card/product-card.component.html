@@ -1,12 +1,12 @@
 <div class="product-card" (click)="emitId()">
-  <img class="product-image" [src]="product?.image" [alt]="product?.name" />
+  <img class="product-image" [src]="product?.thumbnail" [alt]="product?.name" />
   <h3 class="product-title">{{ product?.name }}</h3>
   <p class="product-description">
     {{ product?.description }}
-    <a href="#" class="read-more">Read more</a>
+    <!-- <a href="#" class="read-more">Read more</a> -->
   </p>
 
-  <app-badge>{{ product?.category }}</app-badge>
+  <app-badge>{{ product?.category | replaceHyphen }}</app-badge>
   <div class="product-footer">
     <div class="product-price">
       <span class="price-label">Price</span>

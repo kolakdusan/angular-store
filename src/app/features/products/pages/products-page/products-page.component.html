@@ -1,7 +1,7 @@
 <div class="products-page">
   <div class="container">
     <div class="search-wrapper">
-      <app-search-bar></app-search-bar>
+      <app-search-bar (searchChanged)="onSearch($event)"></app-search-bar>
     </div>
     <div class="products-page-content">
       <app-product-list></app-product-list>
