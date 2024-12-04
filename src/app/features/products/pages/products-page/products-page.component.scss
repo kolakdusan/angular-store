@@ -1,7 +1,11 @@
 @use 'styles/utils' as utils;
 
 .products-page {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
+
+  @include utils.tablet-view {
+    margin-top: 0;
+  }
 
   .search-wrapper {
     width: 100%;
@@ -12,6 +16,22 @@
 
     ::ng-deep app-search-bar {
       width: 100%;
+    }
+  }
+
+  &-controls {
+    position: sticky;
+    top: 1.5rem;
+    margin-top: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include utils.tablet-view {
+      top: 0;
+      display: flex;
+      width: 100%;
+      position: relative;
     }
   }
 
@@ -26,5 +46,9 @@
       flex-direction: column-reverse;
       width: 100%;
     }
+  }
+
+  &-slider {
+    width: 95%;
   }
 }

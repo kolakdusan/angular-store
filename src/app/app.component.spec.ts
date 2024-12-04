@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing'
 import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component'
+import { FormsModule } from '@angular/forms'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([])],
+      imports: [RouterModule.forRoot([]), FormsModule],
       declarations: [AppComponent],
     }).compileComponents()
   })

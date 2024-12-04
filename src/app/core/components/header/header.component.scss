@@ -30,7 +30,7 @@
     .logo {
       font-size: 2rem;
       font-weight: 600;
-      align-self: flex-start;
+      align-self: center;
       @include utils.mobile-view {
         font-size: 1.4rem;
       }

@@ -6,8 +6,8 @@ import {
   selectedProductSelector,
   isLoadingSelector,
   errorSelector,
-} from '../../store/products.selectors'
-import * as ProductsActions from '../../store/products.actions'
+} from '../../store/selectors/products.selectors'
+import * as ProductsActions from '../../store/actions/products.actions'
 import { AppStateInterface } from '../../types/appState.interface'
 import { ProductDetailsInterface } from '../../types/product.interface'
 
@@ -32,9 +32,9 @@ export class ProductDetailsPageComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.product$ = this.store.select(selectedProductSelector)
     this.isLoading$ = this.store.select(isLoadingSelector)
     this.error$ = this.store.select(errorSelector)
+    this.product$ = this.store.select(selectedProductSelector)
   }
 
   ngOnInit(): void {

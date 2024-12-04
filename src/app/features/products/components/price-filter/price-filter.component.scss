@@ -1,0 +1,71 @@
+@use 'styles/utils' as utils;
+
+.products-page-slider {
+  display: flex;
+  flex-direction: column;
+  transition: 0.15s border ease;
+  border: 2px solid utils.$gray-100;
+
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  font-weight: 500;
+
+  &.active {
+    border-color: utils.$active-border-color;
+  }
+
+  .custom-slider {
+    $transition: 0.15s cubic-bezier(0.25, 0.8, 0.5, 1);
+    margin-bottom: 0.7rem;
+    width: 95%;
+
+    ::ng-deep {
+      .mdc-slider__thumb {
+        transition: transform $transition;
+      }
+
+      .mdc-slider__track--active_fill,
+      .mdc-slider__track--inactive {
+        transition: transform $transition;
+      }
+    }
+  }
+
+  mat-error {
+    font-family: utils.$primary-font-family;
+  }
+
+  .price-range-icon {
+    margin-right: 0.2rem;
+    color: utils.$highlight-color;
+  }
+
+  .title {
+    padding-bottom: 0.5rem;
+    color: utils.$faded-gray;
+    font-size: 1rem;
+  }
+
+  .input-field {
+    flex: 1;
+    max-width: 150px;
+  }
+
+  ::ng-deep button {
+    width: 100%;
+  }
+
+  .input-field {
+    --mdc-outlined-text-field-label-text-font: utils.$primary-font-family;
+    --mdc-outlined-text-field-caret-color: var(--highlight-color);
+    --mdc-outlined-text-field-focus-outline-color: var(--highlight-color);
+    --mdc-outlined-text-field-focus-label-text-color: var(--white-100);
+    --mdc-outlined-text-field-label-text-color: var(--white-100);
+    --mdc-outlined-text-field-input-text-color: var(--white-100);
+    --mdc-outlined-text-field-outline-color: var(--gray-100);
+    --mdc-outlined-text-field-hover-outline-color: #444;
+    --mdc-outlined-text-field-outline-width: 2px;
+    --mdc-outlined-text-field-focus-outline-width: 2px;
+    font-family: unset;
+  }
+}

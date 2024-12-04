@@ -2,6 +2,12 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { MatSliderModule } from '@angular/material/slider'
+import { MatInputModule } from '@angular/material/input'
+import {
+  MatPaginatorModule,
+  MatPaginatorIntl,
+} from '@angular/material/paginator'
 
 import { SharedRoutingModule } from './shared-routing.module'
 import { ButtonComponent } from './components/button/button.component'
@@ -10,9 +16,11 @@ import { BadgeComponent } from './components/badge/badge.component'
 import { ErrorPageComponent } from './pages/error-page/error-page.component'
 import { ShufflePipe } from './pipes/shuffle.pipe'
 import { LoaderComponent } from './components/loader/loader.component'
-import { PreloadPipe } from './pipes/preload.pipe'
 import { FallbackComponent } from './components/fallback/fallback.component'
-import { ReplaceHyphenPipe } from './replace-hyphen.pipe'
+import { ReplaceHyphenPipe } from './pipes/replace-hyphen.pipe'
+import { NoContentComponent } from './components/no-content/no-content.component'
+import { PaginatorFormatService } from './services/paginator-format.service'
+import { CustomPaginationDirective } from './directives/custom-pagination.directive'
 
 @NgModule({
   declarations: [
@@ -22,9 +30,10 @@ import { ReplaceHyphenPipe } from './replace-hyphen.pipe'
     ErrorPageComponent,
     ShufflePipe,
     LoaderComponent,
-    PreloadPipe,
     FallbackComponent,
     ReplaceHyphenPipe,
+    NoContentComponent,
+    CustomPaginationDirective,
   ],
   imports: [CommonModule, SharedRoutingModule, FormsModule, FontAwesomeModule],
   exports: [
@@ -32,10 +41,15 @@ import { ReplaceHyphenPipe } from './replace-hyphen.pipe'
     BadgeComponent,
     ButtonComponent,
     ShufflePipe,
-    PreloadPipe,
     LoaderComponent,
     FallbackComponent,
     ReplaceHyphenPipe,
+    NoContentComponent,
+    MatSliderModule,
+    MatInputModule,
+    MatPaginatorModule,
+    CustomPaginationDirective,
   ],
+  providers: [{ provide: MatPaginatorIntl, useClass: PaginatorFormatService }],
 })
 export class SharedModule {}
