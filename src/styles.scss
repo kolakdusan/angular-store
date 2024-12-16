@@ -1,2 +1,80 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// // Define the theme object.
+// $37-angular-store-theme: mat.define-theme((
+//   color: (
+//     theme-type: light,
+//     primary: mat.$azure-palette,
+//     tertiary: mat.$blue-palette,
+//   ),
+//   density: (
+//     scale: 0,
+//   )
+// ));
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// :root {
+//   @include mat.all-component-themes($37-angular-store-theme);
+// }
+
+// // Comment out the line below if you want to use the pre-defined typography utility classes.
+// // For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// // @include mat.typography-hierarchy($37-angular-store-theme);
+
+// // Comment out the line below if you want to use the deprecated `color` inputs.
+// // @include mat.color-variants-backwards-compatibility($37-angular-store-theme);
 @import 'utils';
 @import 'base';
+
+.g-bubble-container {
+  display: flex;
+  gap: 4px;
+}
+
+.g-bubble {
+  background-color: #919191;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.g-bubble:hover {
+  background-color: #b6b6b6;
+  color: white;
+}
+
+.g-bubble__active {
+  background-color: #6193a1;
+  color: white;
+}
+
+/* .g-bubble__disabled {
+  cursor: default;
+  opacity: 0.5;
+  pointer-events: none;
+  color: 919191;
+} */
+
+/* TODO(mdc-migration): The following rule targets internal classes of paginator that may no longer apply for the MDC version. */
+mat-paginator {
+  background: transparent !important;
+}
+
+.mat-mdc-paginator-range-actions {
+  margin-right: 12px !important;
+}
+
+.mat-mdc-icon-button {
+  margin-left: 0.7rem;
+}

@@ -13,7 +13,7 @@ export class ProductsService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<ProductInterface[]> {
-    let apiUrl = 'https://dummyjson.com/products?limit=300'
+    let apiUrl = 'https://dummyjson.com/products?limit=700'
 
     return this.http.get<{ products: any[] }>(apiUrl).pipe(
       map((response) =>
@@ -25,9 +25,12 @@ export class ProductsService {
             price: product.price,
             thumbnail: product.thumbnail,
             category: product.category,
+            images: product.images,
           }))
           .filter((product) => {
-            return CATEGORIES.some((cat) => product.category === cat.value)
+            return CATEGORIES.some(
+              (category) => product.category === category.value
+            )
           })
       )
     )
@@ -50,9 +53,12 @@ export class ProductsService {
             price: product.price,
             thumbnail: product.thumbnail,
             category: product.category,
+            images: product.images,
           }))
           .filter((product) => {
-            return CATEGORIES.some((cat) => product.category === cat.value)
+            return CATEGORIES.some(
+              (category) => product.category === category.value
+            )
           })
       )
     )
@@ -85,6 +91,7 @@ export class ProductsService {
           price: product.price,
           thumbnail: product.thumbnail,
           category: product.category,
+          images: product.images,
         }))
       )
     )

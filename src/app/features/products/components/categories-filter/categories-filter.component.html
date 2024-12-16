@@ -1,0 +1,35 @@
+<div
+  class="product-sidebar"
+  [class.active]="isFilterActive"
+  (focusin)="onFilterFocus()"
+  (focusout)="onFilterBlur()"
+  tabindex="0"
+>
+  <div class="title">Categories</div>
+  <div class="categories" [formGroup]="categoriesForm">
+    <div
+      class="category"
+      *ngFor="let category of categories"
+      [class.active]="categoriesForm.get('category')?.value === category.value"
+      (click)="setCategory(category.value)"
+    >
+      <!-- FIXME: Show validation -->
+      <input
+        type="radio"
+        [value]="category.value"
+        formControlName="category"
+        [id]="'category-' + category.value"
+        class="hidden"
+      />
+      <label [for]="'category-' + category.value">
+        {{ category.display }}
+      </label>
+    </div>
+    <div
+      class="category-error"
+      *ngIf="categoriesForm.get('category')?.errors?.['invalidCategory']"
+    >
+      Invalid category selected
+    </div>
+  </div>
+</div>

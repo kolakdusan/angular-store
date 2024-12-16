@@ -1,13 +1,43 @@
+<!-- Loader -->
 <app-loader *ngIf="isLoading$ | async"></app-loader>
 
-<div *ngIf="error$ | async as error">
+<!-- Fallback -->
+<ng-container *ngIf="error$ | async as error">
   <app-fallback></app-fallback>
-</div>
+</ng-container>
 
-<div *ngIf="!(isLoading$ | async)" class="product-list">
-  <app-product-card
-    *ngFor="let product of products$ | async | shuffle"
-    [product]="product"
-    (idClicked)="onProductClick($event)"
-  ></app-product-card>
-</div>
+<!-- Product list -->
+<ng-container *ngIf="!(isLoading$ | async) && !(error$ | async)">
+  <div *ngIf="(productsLength$ | async) === 0" class="no-content">
+    <app-no-content (resetFilters)="onResetFilters()"></app-no-content>
+  </div>
+
+  <div
+    id="product-list"
+    class="product-list"
+    *ngIf="displayedProducts$ | async as displayedProducts"
+  >
+    <app-product-card
+      *ngFor="let product of displayedProducts; trackBy: trackByProductId"
+      [product]="product"
+      (idClicked)="onProductClick($event)"
+    ></app-product-card>
+  </div>
+
+  <ng-container *ngIf="productsLength$ | async as productsLength">
+    <ng-container *ngIf="pageSize$ | async as pageSize">
+      <mat-paginator
+        appCustomPagination
+        [length]="productsLength"
+        [pageSize]="pageSize"
+        [showFirstLastButtons]="true"
+        [pageSizeOptions]="[3, 5, 9, 10, 20]"
+        [pageIndex]="pageIndex$ | async"
+        (page)="handlePageEvent($event)"
+        class="product-list-paginator"
+        *ngIf="productsLength > pageSize && productsLength !== 0"
+      >
+      </mat-paginator>
+    </ng-container>
+  </ng-container>
+</ng-container>

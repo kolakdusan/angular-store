@@ -1,15 +1,8 @@
 <div class="search-container">
-  <div class="search-icon-wrapper">
-    <div class="inner-wrapper">
-      <button (click)="onSubmit()">
-        <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
-      </button>
-    </div>
-  </div>
   <input
     type="text"
-    [(ngModel)]="searchTerm"
-    (keydown.enter)="onSubmit()"
+    [(ngModel)]="inputText"
+    (keyup)="onSearch()"
     placeholder="Search..."
     class="search-input"
     spellcheck="false"

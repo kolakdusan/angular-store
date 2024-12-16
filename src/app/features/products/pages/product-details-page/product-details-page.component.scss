@@ -1,13 +1,14 @@
 @use 'styles/utils' as utils;
 
 .product-details {
-  margin-top: 6rem;
+  // margin-top: 6rem;
   padding: 0 8rem;
   display: grid;
   place-content: center;
   grid-auto-flow: column;
   grid-template-areas: 'thumbnails image details';
   grid-template-columns: 1.125fr 3fr 5fr;
+  height: calc(100vh - 90px);
 
   @include utils.small-desktop-view {
     padding: 0 2rem;
@@ -62,17 +63,21 @@
         background-color: utils.$gray-400;
         padding: 1.5rem;
         cursor: pointer;
+        background: utils.$product-bg-color;
+        border: 2px solid utils.$gray-400;
+        transition: border 0.15s ease;
       }
 
       .active {
         border: 3px solid utils.$highlight-color;
+        background: utils.$product-bg-highlight-color;
       }
     }
 
     &-image {
       @extend .flex-center;
       border-radius: 10px;
-      background-color: utils.$gray-400;
+      background: utils.$product-bg-highlight-color;
       padding: 1rem;
       grid-area: image;
       aspect-ratio: 1/1;

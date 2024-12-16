@@ -1,0 +1,25 @@
+<div class="search-wrapper">
+  <div class="search-container" [formGroup]="searchForm">
+    <input
+      type="text"
+      formControlName="searchTerm"
+      placeholder="Search..."
+      class="search-input"
+      spellcheck="false"
+    />
+    <div
+      class="search-error"
+      *ngIf="
+        searchForm.get('searchTerm')?.errors &&
+        searchForm.get('searchTerm')?.dirty
+      "
+    >
+      <p *ngIf="searchForm.get('searchTerm')?.errors?.['invalidChars']">
+        Only letters, numbers and spaces allowed.
+      </p>
+      <p *ngIf="searchForm.get('searchTerm')?.errors?.['maxlength']">
+        Search term too long (max {{ maxSearchLength }} characters).
+      </p>
+    </div>
+  </div>
+</div>

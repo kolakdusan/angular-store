@@ -1,0 +1,82 @@
+<div
+  class="products-page-slider"
+  [class.active]="isFilterActive"
+  (focusin)="onFilterFocus()"
+  (focusout)="onFilterBlur()"
+  tabindex="0"
+>
+  <div class="title">Price Range</div>
+  <form [formGroup]="priceRangeForm">
+    <mat-slider
+      class="custom-slider"
+      [min]="MIN_PRICE"
+      [max]="MAX_PRICE"
+      [step]="STEP_SIZE"
+      discrete
+    >
+      <input
+        [(value)]="tempSliderValues.min"
+        matSliderStartThumb
+        [attr.aria-label]="'Minimum Value'"
+        [min]="MIN_PRICE"
+        [max]="MAX_PRICE"
+        (valueChange)="onSliderMinDragEnd()"
+      />
+      <input
+        [(value)]="tempSliderValues.max"
+        matSliderEndThumb
+        [attr.aria-label]="'Maximum Value'"
+        [min]="MIN_PRICE"
+        [max]="MAX_PRICE"
+        (valueChange)="onSliderMaxDragEnd()"
+      />
+    </mat-slider>
+
+    <div class="flex-center">
+      <mat-form-field
+        class="input-field"
+        appearance="outline"
+        hideRequiredMarker="true"
+      >
+        <mat-label>Min Value</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="minPrice"
+          [min]="MIN_PRICE"
+          [max]="priceRangeForm.get('maxPrice')?.value"
+        />
+        <mat-error *ngIf="priceRangeForm.get('minPrice')?.touched">
+          <ng-container
+            *ngIf="priceRangeForm.get('minPrice')?.errors?.['minGreaterThanMax']"
+          >
+            Value must be less than or equal to max
+          </ng-container>
+          <ng-container *ngIf="priceRangeForm.get('minPrice')?.errors?.['min']">
+            Value must be between {{ MIN_PRICE }} and {{ MAX_PRICE }}
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field
+        class="input-field"
+        appearance="outline"
+        hideRequiredMarker="true"
+      >
+        <mat-label>Max Value</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="maxPrice"
+          [min]="priceRangeForm.get('minPrice')?.value"
+          [max]="MAX_PRICE"
+        />
+        <mat-error *ngIf="priceRangeForm.get('maxPrice')?.dirty">
+          <ng-container *ngIf="priceRangeForm.get('maxPrice')?.errors?.['max']">
+            Value must be between {{ MIN_PRICE }} and {{ MAX_PRICE }}
+          </ng-container>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

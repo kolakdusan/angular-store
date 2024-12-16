@@ -6,25 +6,25 @@
 
 .search-container {
   display: flex;
-  justify-content: flex-start;
   position: relative;
-  width: 100%;
+  justify-content: flex-start;
   align-self: flex-start;
+  width: 100%;
 
   .search-input {
-    width: 30%;
-    padding: 0.8rem;
-    padding-left: 3rem;
-    font-size: 1rem;
     border: 2px solid utils.$gray-100;
     border-radius: 10px;
+    padding: 0.8rem;
+    width: 100%;
+    font-size: 1rem;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.6);
+      color: utils.$faded-gray;
     }
 
     &:focus {
       border: 2px solid utils.$highlight-color;
+      border: 2px solid utils.$active-border-color;
     }
 
     @include utils.tablet-view {
@@ -34,26 +34,26 @@
 
   .search-icon-wrapper {
     position: absolute;
-    left: 0.8rem;
     top: 0;
     bottom: 0;
+    left: 0.8rem;
+    cursor: pointer;
     margin: auto;
     width: 30px;
     height: 30px;
     text-align: center;
-    cursor: pointer;
 
     .inner-wrapper {
-      width: 30px;
-      height: 30px;
-      background-color: utils.$highlight-secondary-color;
-      border-radius: 5px;
-      padding: 5px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
       transition: filter 0.15s ease;
+      border-radius: 5px;
+      background-color: utils.$highlight-secondary-color;
+      padding: 5px;
+      width: 30px;
+      height: 30px;
 
       &:hover {
         filter: brightness(120%);

@@ -1,0 +1,95 @@
+@use 'styles/utils' as utils;
+
+.products-page-filters {
+  display: flex;
+  top: 1.5rem;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: max-height 0.4s ease;
+  border-radius: 10px;
+  padding: 1rem 0;
+  max-height: 1000px;
+  overflow: hidden;
+  font-weight: 500;
+
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+
+  @include utils.tablet-view {
+    top: 0;
+    padding: 0.3rem 0;
+    &.hidden {
+      transition: max-height 0.2s ease;
+      max-height: 55px;
+
+      .clear-filters {
+        opacity: 0;
+        transition: opacity 0.15s ease;
+      }
+
+      .filters {
+        opacity: 0;
+        transition: opacity 0.15s ease;
+      }
+
+      .dropdown-icon-wrapper {
+        transform: rotate(0deg);
+        transition: transform 0.2s ease;
+      }
+    }
+  }
+
+  .main-title {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .clear-filters {
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+    padding: 0 1.3rem;
+    font-size: 1rem;
+  }
+
+  .dropdown-button {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    font-size: 1.1rem;
+
+    @include utils.tablet-view {
+      display: block;
+      align-self: flex-end;
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .filters-icon {
+    margin-right: 0.2rem;
+    color: utils.$highlight-color;
+  }
+
+  .dropdown-icon {
+    color: utils.$faded-gray;
+    text-align: center;
+  }
+
+  .dropdown-icon-wrapper {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+  }
+}

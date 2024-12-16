@@ -1,12 +1,12 @@
 export const CATEGORIES = [
   { display: 'All', value: 'All' },
-  { display: 'Beauty', value: 'beauty' },
   { display: 'Fragrances', value: 'fragrances' },
   { display: 'Skin Care', value: 'skin-care' },
-  { display: 'Bags', value: 'womens-bags' },
+  { display: 'Beauty', value: 'beauty' },
   { display: 'Dresses', value: 'womens-dresses' },
+  { display: 'Bags', value: 'womens-bags' },
   { display: 'Jewellery', value: 'womens-jewellery' },
   { display: 'Shoes', value: 'womens-shoes' },
-  { display: 'Watches', value: 'womens-watches' },
+  { display: 'Sunglasses', value: 'sunglasses' },
   { display: 'Home Decoration', value: 'home-decoration' },
 ]

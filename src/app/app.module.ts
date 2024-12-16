@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
-import { provideHttpClient } from '@angular/common/http'
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,7 @@ import { provideHttpClient } from '@angular/common/http'
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [provideHttpClient()],
+  providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

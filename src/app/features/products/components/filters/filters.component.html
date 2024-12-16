@@ -1,0 +1,24 @@
+<div class="products-page-filters" [class.hidden]="isHidden">
+  <div class="title-wrapper">
+    <div class="main-title">
+      <fa-icon [icon]="faSliders" class="filters-icon"></fa-icon>
+      <span>Filters</span>
+    </div>
+
+    <button class="outline-button clear-filters" (click)="onClearFilters()">
+      Clear filters
+    </button>
+
+    <button class="outline-button dropdown-button" (click)="toggleFilters()">
+      <div class="dropdown-icon-wrapper">
+        <fa-icon [icon]="faAngleDown" class="dropdown-icon"></fa-icon>
+      </div>
+    </button>
+  </div>
+
+  <div class="filters">
+    <app-search-filter></app-search-filter>
+    <app-price-filter></app-price-filter>
+    <app-categories-filter></app-categories-filter>
+  </div>
+</div>

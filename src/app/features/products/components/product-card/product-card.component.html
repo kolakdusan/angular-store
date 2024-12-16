@@ -6,6 +6,7 @@
     <!-- <a href="#" class="read-more">Read more</a> -->
   </p>
 
+  <!-- TODO: Badge to set category -->
   <app-badge>{{ product?.category | replaceHyphen }}</app-badge>
   <div class="product-footer">
     <div class="product-price">
@@ -13,6 +14,6 @@
       <span class="price-amount">{{ product?.price | currency : 'USD' }}</span>
     </div>
 
-    <app-button>Add To Cart</app-button>
+    <app-button buttonClass="outline-button">Add To Cart</app-button>
   </div>
 </div>

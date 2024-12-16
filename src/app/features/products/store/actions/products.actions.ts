@@ -2,9 +2,11 @@ import { createAction, props } from '@ngrx/store'
 import {
   ProductInterface,
   ProductDetailsInterface,
-} from '../types/product.interface'
+} from '../../types/product.interface'
 
+// Get products
 export const getProducts = createAction('[Products] Get Products')
+
 export const getProductsSuccess = createAction(
   '[Products] Get Products Success',
   props<{ products: ProductInterface[] }>()
@@ -14,8 +16,7 @@ export const getProductsFailure = createAction(
   props<{ error: string }>()
 )
 
-//
-
+// Get product by Id
 export const getProductById = createAction(
   '[Products] Get Product By ID',
   props<{ id: number }>()
@@ -29,32 +30,9 @@ export const getProductByIdFailure = createAction(
   props<{ error: string }>()
 )
 
-//
-
-export const getProductsByCategory = createAction(
-  '[Products] Get Products By Category',
-  props<{ category: string }>()
-)
-export const getProductsByCategorySuccess = createAction(
-  '[Products] Get Products By Category Success',
-  props<{ products: ProductInterface[] }>()
-)
-export const getProductsByCategoryFailure = createAction(
-  '[Products] Get Products By Category Failure',
-  props<{ error: string }>()
-)
-
-//
-
+// TODO: (keeping for real API search)
+// Search Products
 export const searchProducts = createAction(
   '[Products] Search Products',
   props<{ searchTerm: string }>()
-)
-export const searchProductsSuccess = createAction(
-  '[Products] Search Products Success',
-  props<{ products: ProductInterface[]; searchTerm: string }>()
-)
-export const searchProductsFailure = createAction(
-  '[Products] Search Products Failure',
-  props<{ error: string }>()
 )
