@@ -10,19 +10,17 @@ import { ProductDetailsPageComponent } from './pages/product-details-page/produc
 import { ProductCardComponent } from './components/product-card/product-card.component'
 import { ProductListComponent } from './components/product-list/product-list.component'
 import { StoreModule } from '@ngrx/store'
-import { reducers as productsReducers } from './store/reducers/products.reducers'
 import { reducers as paginationReducers } from './store/reducers/pagination.reducers'
 import { reducers as filtersReducers } from './store/reducers/filters.reducers'
 import { EffectsModule } from '@ngrx/effects'
-import { ProductsEffects } from './store/effects/products.effects'
-import { ProductsService } from './services/products.service'
 import { FiltersComponent } from './components/filters/filters.component'
 import { SearchFilterComponent } from './components/search-filter/search-filter.component'
 import { CategoriesFilterComponent } from './components/categories-filter/categories-filter.component'
 import { PaginationEffects } from './store/effects/pagination.effects'
 import { FiltersEffects } from './store/effects/filters.effects'
 import { RouterEffects } from './store/effects/router.effects'
-import { PriceFilterComponent } from './components/price-filter/price-filter.component'
+import { PriceFilterComponent } from './components/price-filter/price-filter.component';
+import { SortFilterComponent } from './components/sort-filter/sort-filter.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +32,7 @@ import { PriceFilterComponent } from './components/price-filter/price-filter.com
     SearchFilterComponent,
     CategoriesFilterComponent,
     PriceFilterComponent,
+    SortFilterComponent,
   ],
   imports: [
     CommonModule,
@@ -42,16 +41,14 @@ import { PriceFilterComponent } from './components/price-filter/price-filter.com
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('products', productsReducers),
     StoreModule.forFeature('pagination', paginationReducers),
     StoreModule.forFeature('filters', filtersReducers),
     EffectsModule.forFeature([
-      ProductsEffects,
       PaginationEffects,
       FiltersEffects,
       RouterEffects,
     ]),
   ],
-  providers: [ProductsService],
+  providers: [],
 })
 export class ProductsModule {}

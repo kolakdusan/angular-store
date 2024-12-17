@@ -8,6 +8,8 @@ import {
   MatPaginatorModule,
   MatPaginatorIntl,
 } from '@angular/material/paginator'
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSelectModule } from '@angular/material/select'
 
 import { SharedRoutingModule } from './shared-routing.module'
 import { ButtonComponent } from './components/button/button.component'
@@ -21,6 +23,7 @@ import { ReplaceHyphenPipe } from './pipes/replace-hyphen.pipe'
 import { NoContentComponent } from './components/no-content/no-content.component'
 import { PaginatorFormatService } from './services/paginator-format.service'
 import { CustomPaginationDirective } from './directives/custom-pagination.directive'
+import { SplineModelComponent } from './components/spline-model/spline-model.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { CustomPaginationDirective } from './directives/custom-pagination.direct
     ReplaceHyphenPipe,
     NoContentComponent,
     CustomPaginationDirective,
+    SplineModelComponent,
   ],
   imports: [CommonModule, SharedRoutingModule, FormsModule, FontAwesomeModule],
   exports: [
@@ -48,7 +52,10 @@ import { CustomPaginationDirective } from './directives/custom-pagination.direct
     MatSliderModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSnackBarModule,
     CustomPaginationDirective,
+    MatSelectModule,
+    SplineModelComponent,
   ],
   providers: [{ provide: MatPaginatorIntl, useClass: PaginatorFormatService }],
 })

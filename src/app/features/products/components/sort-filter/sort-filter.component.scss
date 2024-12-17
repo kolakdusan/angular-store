@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@use 'styles/utils' as utils;
+
+.sort-wrapper {
+  .sort-select {
+    width: 100%;
+    --mdc-outlined-text-field-label-text-font: utils.$primary-font-family;
+    --mdc-outlined-text-field-caret-color: var(--highlight-color);
+    --mdc-outlined-text-field-focus-outline-color: var(--active-border-color);
+    --mdc-outlined-text-field-focus-label-text-color: var(
+      --active-border-color
+    );
+    --mdc-outlined-text-field-label-text-color: var(--faded-gray);
+    --mdc-outlined-text-field-input-text-color: var(--faded-gray);
+    --mdc-outlined-text-field-outline-color: var(--gray-100);
+    --mdc-outlined-text-field-hover-outline-color: #444;
+    --mdc-outlined-text-field-outline-width: 2px;
+    --mdc-outlined-text-field-focus-outline-width: 2px;
+    font-family: unset;
+  }
+
+  margin-bottom: -15px;
+}

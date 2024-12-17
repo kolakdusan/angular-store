@@ -1,0 +1,15 @@
+<div class="cart-container">
+  <app-loader *ngIf="isLoading$ | async"></app-loader>
+
+  <ng-container *ngIf="!(isEmpty$ | async)">
+    <ng-container *ngIf="cartItems$ | async as cartItems">
+      <app-cart-list [items]="cartItems"> </app-cart-list>
+
+      <app-cart-summary [items]="cartItems"></app-cart-summary>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="isEmpty$ | async">
+    <app-cart-empty></app-cart-empty>
+  </ng-container>
+</div>

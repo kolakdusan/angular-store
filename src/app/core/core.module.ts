@@ -4,11 +4,11 @@ import { RouterModule } from '@angular/router'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 import { HeaderComponent } from './components/header/header.component'
-import { FooterComponent } from './components/footer/footer.component'
+import { AboutComponent } from './components/about/about.component'
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, AboutComponent],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent],
 })
 export class CoreModule {}

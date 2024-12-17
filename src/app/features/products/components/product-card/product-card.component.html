@@ -14,6 +14,8 @@
       <span class="price-amount">{{ product?.price | currency : 'USD' }}</span>
     </div>
 
-    <app-button buttonClass="outline-button">Add To Cart</app-button>
+    <button class="outline-button" (click)="onAddToCart($event)">
+      Add To Cart
+    </button>
   </div>
 </div>

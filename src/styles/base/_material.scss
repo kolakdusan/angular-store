@@ -1,0 +1,84 @@
+@use '@angular/material' as mat;
+
+// -----------------------------
+// Theme Configuration
+// -----------------------------
+$typography-config: (
+  plain-family: $primary-font-family,
+  brand-family: $primary-font-family,
+);
+
+$color-config: (
+  theme-type: light,
+  primary: mat.$azure-palette,
+  tertiary: mat.$blue-palette,
+);
+
+$density-config: (
+  scale: 0,
+);
+
+$angular-store-theme: mat.define-theme(
+  (
+    typography: $typography-config,
+    color: $color-config,
+    density: $density-config,
+  )
+);
+
+@include mat.core();
+
+// -----------------------------
+// Material Component Overrides
+// -----------------------------
+
+// Typography and Base Theme
+:root {
+  @include mat.all-component-typographies($angular-store-theme);
+}
+
+// Form Controls
+.mdc-text-field {
+  &--filled {
+    border-radius: 10px !important;
+  }
+
+  &--outlined {
+    --mdc-outlined-text-field-container-shape: 10px !important;
+  }
+}
+
+// Paginator
+mat-paginator {
+  background: transparent !important;
+
+  .mat-mdc-paginator-range-actions {
+    margin-right: 12px !important;
+  }
+}
+
+.mat-mdc-icon-button {
+  margin-left: 0.7rem;
+}
+
+// Material Component Theme Overrides
+:root {
+  // Snackbar
+  @include mat.snack-bar-overrides(
+    (
+      container-color: #111,
+      supporting-text-color: $white-100,
+      supporting-text-font: $primary-font-family,
+      button-color: $highlight-color,
+    )
+  );
+
+  // Select
+  @include mat.select-overrides(
+    (
+      placeholder-text-color: $faded-gray,
+      enabled-trigger-text-color: $faded-gray,
+      focused-arrow-color: $faded-gray,
+    )
+  );
+}

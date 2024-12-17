@@ -11,7 +11,7 @@ import { Subject, takeUntil } from 'rxjs'
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 
 import { CATEGORIES } from '../../../../shared/data/constants'
-import { AppStateInterface } from '../../types/appState.interface'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
 import * as FiltersActions from '../../store/actions/filters.actions'
 import { selectedCategorySelector } from 'features/products/store/selectors/filters.selectors'
 
@@ -31,7 +31,7 @@ export class CategoriesFilterComponent implements OnInit, OnDestroy {
   )
 
   constructor(
-    private store: Store<AppStateInterface>,
+    private store: Store<ProductsFeatureStateInterface>,
     private fb: FormBuilder
   ) {
     this.categoriesForm = this.fb.group({

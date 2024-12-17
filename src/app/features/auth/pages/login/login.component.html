@@ -1,0 +1,63 @@
+<div class="login-container">
+  <div class="animated-logo">
+    <span
+      class="letter"
+      *ngFor="let letter of letters; let i = index"
+      [style.animation-delay]="i * 0.1 + 's'"
+    >
+      {{ letter }}
+    </span>
+  </div>
+
+  <div class="login-form">
+    <div class="login-title">
+      <span>Welcome back!</span>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          spellcheck="false"
+          [class.error]="submitted && loginForm.get('username')?.invalid"
+        />
+        <div
+          class="input-error"
+          *ngIf="submitted && loginForm.get('username')?.invalid"
+        >
+          Username is required
+        </div>
+      </div>
+      <div class="form-field">
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          [class.error]="submitted && loginForm.get('password')?.invalid"
+        />
+        <div
+          class="input-error"
+          *ngIf="submitted && loginForm.get('password')?.invalid"
+        >
+          Password is required
+        </div>
+      </div>
+      <button type="submit" class="outline-button">Login</button>
+    </form>
+
+    <button (click)="onQuickExpiryLogin()" class="outline-button">
+      dev: Quick expiry login
+    </button>
+
+    <div class="example">
+      <p>example:</p>
+      <p>username: emilys, password: emilyspass</p>
+    </div>
+
+    <div class="links-container">
+      <a class="forgot-password">Forgot password?</a>
+      <a class="back-link" routerLink="/products">← Back to Products</a>
+    </div>
+  </div>
+</div>

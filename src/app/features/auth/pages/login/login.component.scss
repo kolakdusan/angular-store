@@ -1,0 +1,172 @@
+@use 'styles/utils' as utils;
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+  background: utils.$product-bg-color;
+  background: radial-gradient(circle at 0% 0%, #061418 0%, transparent 50%),
+    linear-gradient(180deg, #0b020c, #000202);
+  gap: 3rem;
+  height: 100vh;
+}
+
+.login-form {
+  // background: utils.$product-bg-secondary-color;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid utils.$active-border-color;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: 500px;
+  transition: border-color 0.15s ease;
+
+  .login-title {
+    display: flex;
+    justify-content: center;
+    font-size: 2.3rem;
+    font-weight: 500;
+    padding-bottom: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-field {
+    position: relative;
+
+    input {
+      border: 2px solid utils.$active-border-color;
+
+      border-radius: 10px;
+      padding: 0.8rem;
+      width: 100%;
+      font-size: 1rem;
+
+      &::placeholder {
+        color: utils.$gray-300;
+      }
+
+      &:focus {
+        border: 2px solid utils.$active-border-color;
+      }
+
+      &.error {
+        border: 2px solid utils.$input-error-color;
+      }
+    }
+
+    input[type='password'] {
+      letter-spacing: 0.3rem;
+
+      &::placeholder {
+        letter-spacing: 0.7px;
+      }
+    }
+
+    .input-error {
+      border-radius: 10px;
+      padding: 0.5rem;
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      color: utils.$input-error-color;
+      border: 2px solid utils.$input-error-color;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      z-index: 999;
+      background-color: utils.$black-100;
+
+      opacity: 0;
+      transform: scale(0.95) translateY(-5px);
+      animation: errorPopIn 0.2s ease-out forwards;
+    }
+  }
+
+  button {
+    margin-top: 0.5rem;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid utils.$active-border-color;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  a {
+    color: utils.$highlight-color;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .back-link {
+    color: utils.$faded-gray;
+  }
+}
+
+.example {
+  margin-top: 1rem;
+}
+
+@keyframes errorPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animated-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+
+  .letter {
+    display: inline-block;
+    color: utils.$highlight-color;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+
+    &:nth-child(6) {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

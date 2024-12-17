@@ -10,15 +10,17 @@ $primary-background: #1e1e1e;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem;
+  height: calc(100vh - 90px);
 }
 
 .error-block {
+  margin-top: 2rem;
   width: 80%;
   max-width: 800px;
   padding: 2rem;
-  background-color: $error-background;
+  border: 2px solid utils.$gray-100;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   color: $text-color;

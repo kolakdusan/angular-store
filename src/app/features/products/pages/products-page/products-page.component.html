@@ -1,7 +1,9 @@
 <div class="products-page">
   <div class="container">
     <div class="products-page-content">
-      <app-product-list></app-product-list>
+      <app-product-list
+        (addToCartEvent)="onAddToCartSuccess($event)"
+      ></app-product-list>
       <div class="products-page-controls">
         <app-filters></app-filters>
       </div>

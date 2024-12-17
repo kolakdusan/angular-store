@@ -8,18 +8,19 @@
   <div class="product-details" *ngIf="product$ | async as product">
     <div class="carousel-thumbnails">
       <img
-        *ngFor="let image of product.images | slice : 0 : 3"
+        *ngFor="let image of product.images | slice : 0 : 3; let i = index"
         [src]="image"
         alt="product image"
         priority
         (click)="setMainImage(image)"
-        [class.active]="image === mainImage"
+        [class.active]="image === mainImage || (!mainImage && i === 0)"
+        [attr.data-index]="i"
         loading="lazy"
       />
     </div>
 
-    <div class="carousel-image">
-      <img [src]="mainImage || product.thumbnail" alt="main product image" />
+    <div class="carousel-image" *ngIf="product.images?.length">
+      <img [src]="mainImage || product.images[0]" alt="main product image" />
     </div>
 
     <div class="carousel-details">
@@ -36,7 +37,7 @@
           <p>Price</p>
           <p>{{ product.price | currency }}</p>
         </div>
-        <app-button>Add To Cart</app-button>
+        <button (click)="onAddToCart(product)">Add To Cart</button>
       </div>
     </div>
   </div>
