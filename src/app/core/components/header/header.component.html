@@ -10,39 +10,66 @@
         <fa-icon *ngIf="!isSidebarOpen" [icon]="faBars"></fa-icon>
         <fa-icon *ngIf="isSidebarOpen" [icon]="faXmark"></fa-icon>
       </button>
-      <a routerLink="/" class="logo">glass veil</a>
+      <a routerLink="/products" class="logo">glass veil</a>
       <ul class="nav-links primary-nav">
-        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/arrivals">Arrivals</a></li>
         <li><a routerLink="/products">Products</a></li>
         <li><a routerLink="/about">About</a></li>
       </ul>
+
       <ul *ngIf="isSidebarOpen" class="nav-links primary-nav sidebar">
-        <li><a routerLink="/" (click)="toggleSidebar()">Home</a></li>
+        <li>
+          <a routerLink="/arrivals" (click)="toggleSidebar()">Arrivals</a>
+        </li>
         <li>
           <a routerLink="/products" (click)="toggleSidebar()">Products</a>
         </li>
         <li><a routerLink="/about" (click)="toggleSidebar()">About</a></li>
       </ul>
+
       <ul class="nav-links secondary-nav">
         <li>
+          <a routerLink="/cart" class="cart-link">
+            <fa-icon [icon]="faShoppingCart"></fa-icon>
+            <span *ngIf="cartCount > 0" class="cart-count">{{
+              cartCount
+            }}</span>
+          </a>
+        </li>
+
+        <li class="github-link-wrapper">
+          <a
+            href="https://github.com/kolakdusan/angular-store"
+            target="blank"
+            class="github-link"
+          >
+            <fa-icon [icon]="faGithub" class="github-icon"></fa-icon>
+          </a>
+        </li>
+
+        <li *ngIf="!isAuthenticated">
           <a routerLink="/login">
             <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
-            Login</a
-          >
+            Login
+          </a>
         </li>
-        <li>
+
+        <!-- <li *ngIf="!isAuthenticated">
           <a routerLink="/signup">
             <fa-icon [icon]="faUserPlus"></fa-icon>
-            Sign Up</a
-          >
-        </li>
-        <li>
-          <a routerLink="/github" class="github-link">
-            <fa-icon [icon]="faGithub" class="github-icon"></fa-icon>
+            Sign Up
+          </a>
+        </li> -->
+
+        <li *ngIf="isAuthenticated">
+          <a (click)="onLogout()">
+            <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>
+            Logout
           </a>
         </li>
       </ul>
     </nav>
   </div>
+
   <img src="assets/AbstractDesign.svg" alt="" />
 </header>

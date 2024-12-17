@@ -23,12 +23,10 @@ export class CustomPaginationDirective implements AfterViewInit {
     const nativeElement = this.elementRef.nativeElement
 
     this.ren.setStyle(nativeElement, 'background-color', '#141414')
-
     this.ren.setStyle(nativeElement, 'border', '2px solid #262626 ')
-
     this.ren.setStyle(nativeElement, 'border-radius', '10px')
-
     this.ren.setStyle(nativeElement, 'padding', '0.rem 2rem')
+    this.ren.setStyle(nativeElement, 'margin', '0.5rem')
 
     const itemsPerPage = nativeElement.querySelector(
       '.mat-mdc-paginator-page-size'

@@ -18,10 +18,15 @@
     *ngIf="displayedProducts$ | async as displayedProducts"
   >
     <app-product-card
-      *ngFor="let product of displayedProducts; trackBy: trackByProductId"
+      *ngFor="
+        let product of displayedProducts$ | async;
+        trackBy: trackByProductId
+      "
       [product]="product"
       (idClicked)="onProductClick($event)"
-    ></app-product-card>
+      (addToCartClicked)="onAddToCart($event)"
+    >
+    </app-product-card>
   </div>
 
   <ng-container *ngIf="productsLength$ | async as productsLength">

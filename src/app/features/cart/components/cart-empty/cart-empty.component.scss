@@ -1,0 +1,68 @@
+@use 'styles/utils' as utils;
+
+$background-color: #121212;
+$text-color: #e0e0e0;
+$link-color: #ff6347;
+$error-background: #303030;
+$primary-background: #1e1e1e;
+
+.full-width-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.error-block {
+  padding: 2rem;
+  border: 2px solid utils.$gray-100;
+  border-radius: 10px;
+  color: $text-color;
+  justify-content: space-evenly;
+  display: flex;
+  min-height: 250px;
+  flex-direction: column;
+
+  @include utils.mobile-view {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: $text-color;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 2rem;
+    font-size: 1.2rem;
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  button {
+    margin-top: 0.2rem;
+    width: 150px;
+
+    @include utils.mobile-view {
+      justify-self: center;
+    }
+  }
+}

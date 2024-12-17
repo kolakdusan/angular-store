@@ -1,0 +1,253 @@
+@use 'styles/utils' as utils;
+
+.about-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 20px;
+  height: 100vh;
+  color: #ffffff;
+  position: relative;
+
+  @include utils.small-desktop-view {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @include utils.tablet-view {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    padding-bottom: 4rem;
+  }
+
+  @include utils.mobile-view {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding-bottom: 4rem;
+  }
+
+  .about-header {
+    padding-top: 1.5rem;
+    grid-column: 1 / -1;
+    text-align: center;
+    place-content: center;
+
+    @include utils.tablet-view {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #b0186c, #3399ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @include utils.mobile-view {
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #a0a0a0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @include utils.mobile-view {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .content-grid {
+    grid-column: 1 / -1;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+      max-width: 1200px;
+
+      @include utils.small-desktop-view {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include utils.tablet-view {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include utils.mobile-view {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 2rem;
+        cursor: pointer;
+        border-radius: 10px;
+        background: #1a1a1a;
+        border: 2px solid #333333;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, #00ffcc33, #3399ff33);
+          opacity: 0;
+          transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 1;
+        }
+
+        &:hover {
+          transform: translateY(-5px);
+          border-color: #00ffcc;
+          box-shadow: 0 8px 16px rgba(0, 255, 204, 0.1);
+
+          &::before {
+            opacity: 0.1;
+          }
+
+          fa-icon {
+            transform: scale(1.1) rotate(5deg);
+            color: #00ffcc;
+          }
+        }
+
+        fa-icon {
+          font-size: 2rem;
+          display: block;
+          margin-bottom: 1.5rem;
+          position: relative;
+          z-index: 2;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          color: #3399ff;
+        }
+
+        h3 {
+          font-size: 1.5rem;
+          margin-bottom: 0.75rem;
+          font-weight: 600;
+          position: relative;
+          z-index: 2;
+          color: #ffffff;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        p {
+          position: relative;
+          z-index: 2;
+          color: #a0a0a0;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+    }
+
+    .tech-section {
+      text-align: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        color: #ffffff;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+
+        $colors: #00ffcc, #3399ff, #ff3366, #9933ff, #ffcc00;
+
+        .tech-chip {
+          padding: 0.75rem 1.5rem;
+          border-radius: 20px;
+          font-size: 1rem;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+          background: #1a1a1a;
+          will-change: transform;
+
+          @for $i from 1 through 5 {
+            $color: nth($colors, $i);
+
+            &:nth-child(5n + #{$i}) {
+              border: 2px solid $color;
+              color: $color;
+
+              &:hover {
+                background: rgba($color, 0.13);
+                transform: translateY(-2px) translateZ(0);
+                box-shadow: 0 4px 12px rgba($color, 0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .back-arrow {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: #ddd;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    fa-icon {
+      color: #ddd;
+      font-size: 24px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @include utils.tablet-view {
+      width: 110px;
+      height: 50px;
+      flex-direction: row;
+      gap: 8px;
+      right: 10px;
+      top: 10px;
+      fa-icon {
+        font-size: 22px;
+      }
+    }
+
+    @include utils.mobile-view {
+      fa-icon {
+        font-size: 18px;
+      }
+    }
+  }
+}

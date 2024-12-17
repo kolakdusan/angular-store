@@ -1,0 +1,15 @@
+<div class="sort-wrapper">
+  <form [formGroup]="sortForm">
+    <mat-form-field
+      class="sort-select"
+      appearance="outline"
+      hideRequiredMarker="true"
+    >
+      <mat-select formControlName="sortType">
+        <mat-option *ngFor="let option of sortOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

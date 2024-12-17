@@ -9,6 +9,7 @@ export const initialState: FiltersStateInterface = {
     min: 0,
     max: 250,
   },
+  sortType: '',
 }
 
 export const reducers = createReducer(
@@ -27,6 +28,11 @@ export const reducers = createReducer(
   on(FiltersActions.updatePriceRange, (state, { priceRange }) => ({
     ...state,
     priceRange: priceRange || { min: 0, max: 250 },
+  })),
+
+  on(FiltersActions.updateSort, (state, { sortType }) => ({
+    ...state,
+    sortType,
   })),
 
   on(FiltersActions.resetFilters, () => ({

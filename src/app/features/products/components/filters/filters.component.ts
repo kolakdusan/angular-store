@@ -1,9 +1,11 @@
 import { Component } from '@angular/core'
 import { Store } from '@ngrx/store'
-import { faSliders, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faSliders } from '@fortawesome/free-solid-svg-icons'
+import { Subscription } from 'rxjs'
 
 import * as FiltersActions from '../../store/actions/filters.actions'
-import { AppStateInterface } from '../../types/appState.interface'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
+import { hasActiveFiltersSelector } from 'features/products/store/selectors/filters.selectors'
 
 @Component({
   selector: 'app-filters',
@@ -14,11 +16,13 @@ export class FiltersComponent {
   faSliders = faSliders
   faAngleDown = faAngleDown
 
-  isHidden: boolean = true
+  isHidden = true
+  hasActiveFilters$ = this.store.select(hasActiveFiltersSelector)
 
-  constructor(private store: Store<AppStateInterface>) {}
+  constructor(private store: Store<ProductsFeatureStateInterface>) {}
 
   toggleFilters(): void {
+    // this.isHidden = window.innerWidth < 768
     this.isHidden = !this.isHidden
   }
 

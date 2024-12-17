@@ -26,6 +26,7 @@ export class ProductsService {
             thumbnail: product.thumbnail,
             category: product.category,
             images: product.images,
+            stock: product.stock,
           }))
           .filter((product) => {
             return CATEGORIES.some(
@@ -54,6 +55,7 @@ export class ProductsService {
             thumbnail: product.thumbnail,
             category: product.category,
             images: product.images,
+            stock: product.stock,
           }))
           .filter((product) => {
             return CATEGORIES.some(
@@ -75,6 +77,7 @@ export class ProductsService {
         thumbnail: product.thumbnail,
         images: product.images,
         category: product.category,
+        stock: product.stock,
       }))
     )
   }
@@ -92,6 +95,7 @@ export class ProductsService {
           thumbnail: product.thumbnail,
           category: product.category,
           images: product.images,
+          stock: product.stock,
         }))
       )
     )

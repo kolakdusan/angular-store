@@ -1,0 +1,71 @@
+@use 'styles/utils' as utils;
+
+.cart-summary {
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid utils.$gray-100;
+  position: sticky;
+  top: 20px;
+  transition: border-color 0.15s ease;
+
+  .summary-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid utils.$gray-200;
+    font-weight: 600;
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+    color: utils.$white-100;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+
+    &:last-child {
+      margin-top: 0.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid utils.$gray-200;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  }
+
+  .checkout-button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: utils.$highlight-secondary-color;
+    color: utils.$white-100;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.15s ease;
+    cursor: pointer;
+    filter: brightness(100%);
+
+    &:hover {
+      filter: brightness(125%);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: utils.$gray-100;
+
+      &:hover {
+        filter: brightness(100%);
+      }
+    }
+  }
+
+  @include utils.tablet-view {
+    position: relative;
+    top: 0;
+  }
+}

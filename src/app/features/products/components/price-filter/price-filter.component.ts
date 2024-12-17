@@ -9,7 +9,7 @@ import {
 import { Store } from '@ngrx/store'
 import { Subject, takeUntil, debounceTime, filter } from 'rxjs'
 
-import { AppStateInterface } from '../../types/appState.interface'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
 import * as FiltersActions from '../../store/actions/filters.actions'
 import { priceRangeSelector } from 'features/products/store/selectors/filters.selectors'
 
@@ -22,6 +22,7 @@ export class PriceFilterComponent implements OnInit, OnDestroy {
   readonly MIN_PRICE = 0
   readonly MAX_PRICE = 250
   readonly STEP_SIZE = 10
+  isLoaded = false
 
   isFilterActive: boolean = false
   priceRangeForm: FormGroup
@@ -30,7 +31,7 @@ export class PriceFilterComponent implements OnInit, OnDestroy {
   currentValues = { min: this.MIN_PRICE, max: this.MAX_PRICE }
 
   constructor(
-    private store: Store<AppStateInterface>,
+    private store: Store<ProductsFeatureStateInterface>,
     private fb: FormBuilder
   ) {
     this.priceRangeForm = this.fb.group({
@@ -52,6 +53,10 @@ export class PriceFilterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initializePriceRangeSubscription()
     this.initializeFormValueChanges()
+
+    setTimeout(() => {
+      this.isLoaded = true
+    }, 150)
   }
 
   ngOnDestroy(): void {
@@ -131,16 +136,6 @@ export class PriceFilterComponent implements OnInit, OnDestroy {
     } else {
       this.priceRangeForm.patchValue({ maxPrice: newValue.max })
     }
-
-    // FIXME: I actually don't need this code below.
-
-    // if (this.priceRangeForm.valid) {
-    //   this.store.dispatch(
-    //     FiltersActions.updatePriceRange({
-    //       priceRange: newValue,
-    //     })
-    //   )
-    // }
   }
 
   minLessThanMaxValidator() {
