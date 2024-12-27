@@ -6,6 +6,7 @@ export interface ProductInterface {
   thumbnail: string
   category: string
   images: string[]
+  stock: number
 }
 
 export interface ProductDetailsInterface extends ProductInterface {

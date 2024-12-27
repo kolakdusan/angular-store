@@ -1,2 +1,6 @@
-<app-header></app-header>
+<app-header
+  [cartCount]="(cartCount$ | async) ?? 0"
+  *ngIf="showHeader$ | async"
+  (logout)="handleLogout()"
+></app-header>
 <router-outlet></router-outlet>

@@ -5,7 +5,6 @@
   flex-direction: column;
   transition: 0.15s border ease;
   border: 2px solid utils.$gray-100;
-
   border-radius: 10px;
   padding: 1rem 1rem;
   font-weight: 500;
@@ -21,12 +20,25 @@
 
     ::ng-deep {
       .mdc-slider__thumb {
-        transition: transform $transition;
+        transition: transform 0s;
       }
 
       .mdc-slider__track--active_fill,
       .mdc-slider__track--inactive {
-        transition: transform $transition;
+        transition: transform 0s;
+      }
+    }
+
+    &.loaded {
+      ::ng-deep {
+        .mdc-slider__thumb {
+          transition: transform $transition;
+        }
+
+        .mdc-slider__track--active_fill,
+        .mdc-slider__track--inactive {
+          transition: transform $transition;
+        }
       }
     }
   }
@@ -49,13 +61,18 @@
   .input-field {
     flex: 1;
     max-width: 150px;
-  }
 
-  ::ng-deep button {
-    width: 100%;
-  }
+    ::ng-deep input[type='number'] {
+      appearance: textfield;
+      -moz-appearance: textfield;
 
-  .input-field {
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
     --mdc-outlined-text-field-label-text-font: utils.$primary-font-family;
     --mdc-outlined-text-field-caret-color: var(--highlight-color);
     --mdc-outlined-text-field-focus-outline-color: var(--highlight-color);
@@ -67,5 +84,9 @@
     --mdc-outlined-text-field-outline-width: 2px;
     --mdc-outlined-text-field-focus-outline-width: 2px;
     font-family: unset;
+  }
+
+  ::ng-deep button {
+    width: 100%;
   }
 }

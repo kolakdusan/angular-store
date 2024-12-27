@@ -19,27 +19,18 @@
     font-size: 1.5rem;
   }
 
-  @include utils.tablet-view {
-    top: 0;
-    padding: 0.3rem 0;
-    &.hidden {
-      transition: max-height 0.2s ease;
-      max-height: 55px;
+  &.hidden {
+    transition: max-height 0.3s ease;
+    max-height: 60px;
 
-      .clear-filters {
-        opacity: 0;
-        transition: opacity 0.15s ease;
-      }
+    .filters {
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
 
-      .filters {
-        opacity: 0;
-        transition: opacity 0.15s ease;
-      }
-
-      .dropdown-icon-wrapper {
-        transform: rotate(0deg);
-        transition: transform 0.2s ease;
-      }
+    .dropdown-icon-wrapper {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
     }
   }
 
@@ -49,16 +40,24 @@
   }
 
   .clear-filters {
+    // background-color: transparent;
     justify-content: center;
     align-items: center;
     opacity: 1;
     transition: opacity 0.25s ease;
     padding: 0 1.3rem;
     font-size: 1rem;
+    margin-left: auto;
+    margin-right: 1rem;
+
+    &.hidden {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
   }
 
   .dropdown-button {
-    display: none;
+    // display: none;
     justify-content: center;
     align-items: center;
     padding: 0 0.5rem;

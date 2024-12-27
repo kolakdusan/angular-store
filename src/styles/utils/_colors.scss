@@ -9,10 +9,20 @@ $highlight-color: #b0186c;
 $highlight-secondary-color: #5f103c;
 $input-error-color: #ffb4ab;
 
+$remove-primary-color: #a8324b;
+$remove-secondary-color: #d94861;
+
 $faded-gray: rgba(255, 255, 255, 0.6);
 $active-border-color: #444;
 $product-bg-color: radial-gradient(circle at 100% 0%, #051f3c, transparent 60%),
   linear-gradient(65deg, #0a242d, black 50%);
+
+$product-bg-secondary-color: radial-gradient(
+    circle at 0% 100%,
+    #020a12,
+    transparent 60%
+  ),
+  linear-gradient(135deg, #0c0c0c, #181818 50%);
 
 $product-bg-highlight-color: radial-gradient(
     circle at 100% 0%,
@@ -20,6 +30,7 @@ $product-bg-highlight-color: radial-gradient(
     transparent 60%
   ),
   linear-gradient(65deg, #0d3c4b, #1f0718 50%);
+
 :root {
   --black-100: #141414;
   --black-200: #1a1a1a;
@@ -30,4 +41,6 @@ $product-bg-highlight-color: radial-gradient(
   --white-100: #e7e7e7;
   --highlight-color: #b0186c;
   --highlight-secondary-color: #5f103c;
+  --faded-gray: rgba(255, 255, 255, 0.6);
+  --active-border-color: #444;
 }

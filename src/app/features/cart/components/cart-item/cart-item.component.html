@@ -1,0 +1,50 @@
+<div class="cart-item">
+  <a [routerLink]="['/products', item.productId]">
+    <img [src]="item.thumbnail" [alt]="item.name" class="cart-item-image" />
+  </a>
+  <div class="cart-item-details">
+    <a [routerLink]="['/products', item.productId]">
+      <h3 class="cart-item-name">{{ item.name }}</h3>
+    </a>
+    <p class="cart-item-price">{{ item.price | currency }}</p>
+    <p class="stock-info">{{ item.stock }} in stock</p>
+  </div>
+  <div class="cart-item-actions">
+    <form [formGroup]="quantityForm" class="quantity-form">
+      <div class="quantity-form">
+        <input
+          type="number"
+          formControlName="quantity"
+          [min]="1"
+          [max]="item.stock"
+          class="quantity-input"
+          [class.error]="quantityControl?.dirty && quantityControl?.errors"
+        />
+        <div
+          *ngIf="quantityControl?.dirty && quantityControl?.errors"
+          class="quantity-warning"
+        >
+          <fa-icon [icon]="faTriangleExclamation" />
+        </div>
+        <div
+          *ngIf="quantityControl?.dirty && quantityControl?.errors"
+          class="quantity-error"
+        >
+          <p *ngIf="quantityControl?.errors?.['min']">
+            Quantity must be at least 1
+          </p>
+          <p *ngIf="quantityControl?.errors?.['max']">
+            Only {{ item.stock }} items available in stock
+          </p>
+          <p *ngIf="quantityControl?.errors?.['required']">
+            Please enter a quantity
+          </p>
+          <p *ngIf="quantityControl?.errors?.['pattern']">
+            Please enter a valid number
+          </p>
+        </div>
+      </div>
+    </form>
+    <button class="outline-button" (click)="onRemoveItem()">Remove</button>
+  </div>
+</div>

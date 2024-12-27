@@ -5,18 +5,20 @@
   padding: 1rem 2rem;
   border-bottom: 2px solid utils.$gray-100;
   white-space: nowrap;
+  height: utils.$header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   @include utils.mobile-view {
-    padding: 1rem 0;
+    padding: 0 1rem;
   }
 
   .container {
-    @include utils.mobile-view {
-      padding: 0 1rem;
-    }
-
+    width: 100%;
     @include utils.tablet-view {
-      padding: 0 1.5rem; // TODO: possibly make the media query global
+      padding: 0;
     }
   }
 
@@ -31,15 +33,17 @@
       font-size: 2rem;
       font-weight: 600;
       align-self: center;
+      z-index: 3;
       @include utils.mobile-view {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+        margin-left: 0.4rem;
       }
     }
 
     .nav-links {
       @extend .flex-center;
       font-size: 1.2rem;
-
+      z-index: 3;
       &.primary-nav {
         padding: 0.2rem 3rem;
         border: 2px solid utils.$gray-100;
@@ -56,10 +60,6 @@
         @extend .flex-center;
         justify-content: flex-end;
 
-        @include utils.mobile-view {
-          font-size: 0.9rem;
-        }
-
         a {
           @extend .flex-center;
           height: 40px;
@@ -75,11 +75,54 @@
           }
         }
 
-        & .github-link {
-          padding: 0.5rem;
-
+        & .github-link-wrapper {
           @include utils.tablet-view {
             display: none;
+          }
+        }
+
+        & .github-link {
+          // padding: 0.5rem;
+          width: 40px;
+          height: 40px;
+        }
+
+        .cart-link {
+          position: relative;
+          border-radius: 5px;
+          width: 40px;
+          height: 40px;
+
+          .cart-count {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            height: 15px;
+            width: 15px;
+            background-color: utils.$highlight-color;
+            color: utils.$white-100;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+              forwards;
+            border-radius: 50px;
+          }
+        }
+
+        @keyframes popIn {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
           }
         }
       }
@@ -99,6 +142,10 @@
           flex-direction: column;
           background-color: rgba(0, 0, 0, 0.7);
           backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          @-moz-document url-prefix() {
+            backdrop-filter: blur(5px);
+          }
           font-size: 3rem;
           z-index: 999;
         }
@@ -117,6 +164,7 @@
       background-color: utils.$black-200;
       width: 40px;
       aspect-ratio: 1/1;
+      position: sticky;
 
       @include utils.tablet-view {
         display: flex;
@@ -134,7 +182,6 @@
       &.active {
         outline: none;
         background-color: transparent;
-        position: fixed;
 
         &:hover {
           background-color: transparent;
@@ -147,7 +194,7 @@
     @extend .absolute-centered;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 1;
     object-fit: cover;
   }
 }

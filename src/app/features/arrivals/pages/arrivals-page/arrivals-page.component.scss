@@ -1,0 +1,133 @@
+@use 'styles/utils' as utils;
+
+:host {
+  width: 100%;
+  background-color: #929292;
+}
+
+* {
+  overflow: hidden;
+}
+
+.product-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - utils.$header-height);
+  width: 100%;
+
+  @include utils.tablet-view {
+    height: 100%;
+    padding-bottom: 3rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 450px) minmax(300px, 500px);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: utils.$white-100;
+
+    @include utils.tablet-view {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  }
+
+  .content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    justify-content: center;
+
+    @include utils.tablet-view {
+      grid-auto-columns: 1fr 3fr 3fr;
+    }
+
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+      color: utils.$highlight-color;
+    }
+
+    .description {
+      line-height: 1.6;
+      font-size: 1.125rem;
+      color: #ccc;
+    }
+
+    .features {
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        color: #ccc;
+
+        li {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+          line-height: 1.5;
+
+          &:before {
+            content: '•';
+            margin-right: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: utils.$highlight-color;
+          }
+        }
+      }
+    }
+
+    .cta-button {
+      background-color: utils.$highlight-color;
+      color: utils.$white-100;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+      transition: filter 0.2s;
+      font-size: 1.125rem;
+
+      &:hover {
+        filter: brightness(125%);
+      }
+    }
+  }
+
+  .model-column {
+    width: 100%;
+    animation: fadeIn 0.3s ease-in forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    app-spline-model {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @include utils.tablet-view {
+      height: 700px;
+    }
+  }
+}

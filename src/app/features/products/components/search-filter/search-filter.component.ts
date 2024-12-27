@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store'
 import { Subject, takeUntil, debounceTime } from 'rxjs'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-import { AppStateInterface } from '../../types/appState.interface'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
 import * as FiltersActions from '../../store/actions/filters.actions'
 import { searchTermSelector } from 'features/products/store/selectors/filters.selectors'
 
@@ -26,7 +26,7 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
   maxSearchLength = 20
 
   constructor(
-    private store: Store<AppStateInterface>,
+    private store: Store<ProductsFeatureStateInterface>,
     private fb: FormBuilder
   ) {
     this.searchForm = this.fb.group({
@@ -69,17 +69,10 @@ export class SearchFilterComponent implements OnInit, OnDestroy {
 
   createSearchValidator() {
     return (control: AbstractControl): ValidationErrors | null => {
-      let value = control.value || ''
+      const value = control.value || ''
 
       const hasInvalidChars = /[^a-zA-Z0-9\s]/.test(value)
-
       const isTooLong = value.length > this.maxSearchLength
-
-      if (value !== control.value) {
-        setTimeout(() => {
-          control.setValue(value, { emitEvent: false })
-        })
-      }
 
       if (hasInvalidChars || isTooLong) {
         return {

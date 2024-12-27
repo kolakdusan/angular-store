@@ -1,11 +1,15 @@
-<div class="products-page-filters" [class.hidden]="isHidden">
+<div class="products-page-filters hidden" [class.hidden]="isHidden">
   <div class="title-wrapper">
     <div class="main-title">
       <fa-icon [icon]="faSliders" class="filters-icon"></fa-icon>
       <span>Filters</span>
     </div>
 
-    <button class="outline-button clear-filters" (click)="onClearFilters()">
+    <button
+      class="outline-button clear-filters hidden"
+      (click)="onClearFilters()"
+      [ngClass]="{ hidden: !(hasActiveFilters$ | async) }"
+    >
       Clear filters
     </button>
 
@@ -18,6 +22,7 @@
 
   <div class="filters">
     <app-search-filter></app-search-filter>
+    <app-sort-filter></app-sort-filter>
     <app-price-filter></app-price-filter>
     <app-categories-filter></app-categories-filter>
   </div>

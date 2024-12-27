@@ -1,11 +1,12 @@
 * {
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   margin: 0;
   padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  background: #060208;
 }
 
 body {
@@ -13,23 +14,13 @@ body {
   background: radial-gradient(circle at 0% 0%, #061418 0%, transparent 50%),
     linear-gradient(180deg, #0b020c, #000202);
 
-  // background-color: rgb(42, 19, 50);
-  // background-image: radial-gradient(
-  //     circle at 87% 90%,
-  //     hsla(0, 0%, 3%, 1) 0%,
-  //     transparent 68.4918641207511%
-  //   ),
-  //   radial-gradient(
-  //     circle at 39% 88%,
-  //     hsla(0, 0%, 3%, 1) 5.847953216374269%,
-  //     transparent 78.61653873376679%
-  //   ),
-  //   radial-gradient(
-  //     circle at 92% 65%,
-  //     hsla(0, 0%, 3%, 1) 5.847953216374269%,
-  //     transparent 78.61653873376679%
-  //   );
-  // background-blend-mode: normal, normal, normal;
+  min-height: 100vh;
+  &.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 a {

@@ -1,8 +1,9 @@
 import { createSelector } from '@ngrx/store'
-import { AppStateInterface } from '../../types/appState.interface'
-import { combinedFilteredProductsSelector } from './filters.selectors'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
+import { sortedProductsSelector } from './filters.selectors'
 
-export const selectFeature = (state: AppStateInterface) => state.pagination
+export const selectFeature = (state: ProductsFeatureStateInterface) =>
+  state.pagination
 
 export const pageIndexSelector = createSelector(
   selectFeature,
@@ -15,18 +16,18 @@ export const pageSizeSelector = createSelector(
 )
 
 export const productsLengthSelector = createSelector(
-  combinedFilteredProductsSelector,
-  (filteredProducts) => filteredProducts.length
+  sortedProductsSelector,
+  (sortedProducts) => sortedProducts.length
 )
 
 export const displayedProductsSelector = createSelector(
-  combinedFilteredProductsSelector,
+  sortedProductsSelector,
   pageIndexSelector,
   pageSizeSelector,
-  (filteredProducts, pageIndex, pageSize) => {
+  (sortedProducts, pageIndex, pageSize) => {
     const startIndex = pageIndex * pageSize
     const endIndex = startIndex + pageSize
-    return filteredProducts.slice(startIndex, endIndex)
+    return sortedProducts.slice(startIndex, endIndex)
   }
 )
 

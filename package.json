@@ -29,6 +29,7 @@
     "@ngrx/store-devtools": "^18.1.1",
     "@schematics/angular": "^17.2.1",
     "colorthief": "^2.6.0",
+    "jwt-decode": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"

@@ -1,7 +1,8 @@
 import { createSelector } from '@ngrx/store'
-import { AppStateInterface } from '../../types/appState.interface'
+import { ProductsFeatureStateInterface } from '../../types/productsFeatureState.interface'
 
-export const selectFeature = (state: AppStateInterface) => state.products
+export const selectFeature = (state: ProductsFeatureStateInterface) =>
+  state.products
 
 export const isLoadingSelector = createSelector(
   selectFeature,

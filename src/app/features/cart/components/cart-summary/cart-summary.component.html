@@ -1,0 +1,20 @@
+<div class="cart-summary" *ngIf="items.length">
+  <h2 class="summary-title">Order Summary</h2>
+  <div class="summary-row">
+    <span>Total Items:</span>
+    <span [@fadeChange]="totalItems">{{ totalItems }}</span>
+  </div>
+  <div class="summary-row">
+    <span>Total Price:</span>
+    <span [@fadeChange]="totalPrice">{{ totalPrice | currency }}</span>
+  </div>
+  <a routerLink="/checkout">
+    <button
+      class="checkout-button"
+      [disabled]="hasErrors$ | async"
+      [class.disabled]="hasErrors$ | async"
+    >
+      Go To Checkout
+    </button>
+  </a>
+</div>

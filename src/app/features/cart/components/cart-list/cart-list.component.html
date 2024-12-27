@@ -1,0 +1,7 @@
+<div class="cart-list" [@listAnimation]="items.length">
+  <h2 class="cart-title">Your Cart</h2>
+  <app-cart-item
+    *ngFor="let item of items; trackBy: trackByProductId"
+    [item]="item"
+  ></app-cart-item>
+</div>
