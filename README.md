@@ -1,5 +1,7 @@
 # Glass Veil 🛍️
 
+## Live: https://glass-veil.netlify.app
+
 Glass Veil is a modern e-commerce web application built with Angular, featuring a sleek design and smooth user experience. This project was developed as part of an internship program, demonstrating proficiency in modern web development practices and state management.
 
 ## 🚀 Technologies
